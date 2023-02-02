@@ -1,4 +1,4 @@
-const express = require('express')
+/*const express = require('express')
 
 const app = express()
 
@@ -7,3 +7,4 @@ res.sendFile("index.html", {root:__dirname});
 })
 
 app.listen(8080, () => console.log(`Application is running on http://localhost:${8080}`))
+*/
