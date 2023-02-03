@@ -1,9 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: rgb(138, 43, 226);
+    background-color: #fbdbff;
+    overflow: hidden;
 }
 
 iframe {
     height: 100vh;
-    width: 100vw;
-    border-style: none;
+    width: 100%;
 }
