@@ -1,5 +1,9 @@
 
 class StringObservable {
+    constructor(ini) {
+        this.#value = ini
+    }
+
     sub(callable) {
         this.#observers.push(callable)
     }
@@ -31,25 +35,30 @@ class StringObservable {
     #observers = []
 }
 
-const valueInput = new StringObservable()
+const valueInput = new StringObservable("0")
 
 function isNumber(char) {
-    return "1234567890".indexOf(char) != -1
+    return "1234567890".indexOf(char) !== -1
 }
 
 function isOperator(char) {
-    return "+-*/".indexOf(char) != -1
+    return "+-*/".indexOf(char) !== -1
 }
 
 function setupNumbers() {
     const numberElements = document.getElementsByClassName('number')
 
+    const addNumber = (num) => {
+        if (valueInput.value() === '0') valueInput.set(num)
+        else valueInput.append(num)
+    }
+
     for (let numberElement of numberElements) {
-        numberElement.onclick = ({ target }) => valueInput.append(target.textContent)
+        numberElement.onclick = ({ target }) => addNumber(target.textContent)
     }
 
     window.addEventListener('keydown', ({ key }) => {
-        if (isNumber(key)) valueInput.append(key);
+        if (isNumber(key)) addNumber(key);
     })
 }
 
@@ -70,7 +79,7 @@ function setupControls() {
     const deleter = document.getElementById('deleter')
     const cleanall = document.getElementById('cleanall')
 
-    const cleanAll = () => valueInput.set('')
+    const cleanAll = () => valueInput.set('0')
     const solveExp = () => { 
         let res
         try {
@@ -90,8 +99,8 @@ function setupControls() {
     deleter.onclick = deleteLast
 
     window.addEventListener('keydown', ({ key }) => {
-        if (key == 'Backspace') deleteLast()
-        if (key == 'Enter') solveExp()
+        if (key === 'Backspace') deleteLast()
+        if (key === 'Enter') solveExp()
     })
 }
 
@@ -104,6 +113,9 @@ function init() {
 
     const screen = document.getElementById('screen')
 
+    screen.textContent = valueInput.value()
+
+    // Cuando se modifique el valor, será mostrado en pantalla
     valueInput.sub((val) => {
         screen.textContent = val
     })
