@@ -9,8 +9,7 @@ class StringObservable {
     }
 
     append(str) {
-        this.#value += str
-        this.update()
+        this.set(this.#value + str)
     }
 
     set(str) {
@@ -48,7 +47,7 @@ function setupNumbers() {
     for (let numberElement of numberElements) {
         numberElement.onclick = ({ target }) => valueInput.append(target.textContent)
     }
-    
+
     window.addEventListener('keydown', ({ key }) => {
         if (isNumber(key)) valueInput.append(key);
     })
@@ -72,12 +71,20 @@ function setupControls() {
     const cleanall = document.getElementById('cleanall')
 
     const cleanAll = () => valueInput.set('')
-    const solveExp = () => valueInput.set(eval(valueInput.value()))
+    const solveExp = () => { 
+        let res
+        try {
+            res = eval(valueInput.value())
+        } catch (err) {
+            return
+        }
+        valueInput.set(res) 
+    }
     const deleteLast = () => {
         let val = valueInput.value()
         valueInput.set(val.substring(0, val.length - 1))
     }
-    
+
     cleanall.onclick = cleanAll
     solver.onclick = solveExp
     deleter.onclick = deleteLast
@@ -96,7 +103,7 @@ function init() {
     setupControls()
 
     const screen = document.getElementById('screen')
-    
+
     valueInput.sub((val) => {
         screen.textContent = val
     })
