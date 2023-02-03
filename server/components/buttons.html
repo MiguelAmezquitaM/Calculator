@@ -1,13 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./buttons.css">
-    <title>Document</title>
 </head>
-<body>
-    Holi
-    </body>
+
+<body onload="init();">
+
+    <table class="Calculadora">
+        <tr>
+            <td colspan="5"><span id="resultado"></span></td>
+        </tr>
+
+        <tr>
+            <td><button class="c-button" id="siete">7</button></td>
+            <td><button class="c-button" id="ocho">8</button></td>
+            <td><button class="c-button" id="nueve">9</button></td>
+            <td><button class="c-button" id="DEL">DEL</button></td>
+            <td><button class="c-button" id="AC">AC</button></td>
+        </tr>
+
+        <tr>
+            <td><button class="c-button" id="cuatro">4</button></td>
+            <td><button class="c-button" id="cinco">5</button></td>
+            <td><button class="c-button" id="seis">6</button></td>
+            <td><button class="c-button" id="producto">X</button></td>
+            <td><button class="c-button" id="division">/</button></td>
+        </tr>
+
+        <tr>
+            <td><button class="c-button" id="uno">1</button></td>
+            <td><button class="c-button" id="dos">2</button></td>
+            <td><button class="c-button" id="tres">3</button></td>
+            <td><button class="c-button" id="suma">+</button></td>
+            <td><button class="c-button" id="resta">-</button></td>
+        </tr>
+
+        <tr>
+            <td><button class="c-button" id="cero">0</button></td>
+            <td><button class="c-button" id="punto">.</button></td>
+            <td><button class="c-button" id="notacionCientifica">x10^x</button></td>
+            <td><button class="c-button" id="Ans">Ans</button></td>
+            <td><button class="c-button" id="igual">=</button></td>
+        </tr>
+    </table>
+
+    <script src="./buttons.js"></script>
+</body>
+
 </html>
