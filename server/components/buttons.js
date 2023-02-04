@@ -104,8 +104,9 @@ cero.onclick = function(e){
 
 suma.onclick = function(e){
   operandoA = resultado.textContent;
+  resultado.textContent = "+";
   operacion = "+";
-  limpiar();
+  //limpiar();
 }
 
 resta.onclick = function(e){
