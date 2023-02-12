@@ -1,0 +1,36 @@
+#side-panel {
+    background-color: #05091c;
+    height: 100%;
+    width: 50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px 0;
+}
+
+#side-panel .low-elems, 
+#side-panel .top-elems {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+#side-panel .top-elems {
+    flex-direction: column;
+}
+
+#side-panel .low-elems {
+    flex-direction: column-reverse;
+}
+
+#side-panel .elem {
+    width: 27px;
+    cursor: pointer;
+}
+
+.logo svg {
+    width: inherit;
+    stroke-width: 10;
+}
